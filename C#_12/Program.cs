@@ -1,4 +1,4 @@
-﻿using System.Linq.Expressions;
+using System.Linq.Expressions;
 
 namespace C__12
 {
@@ -34,6 +34,12 @@ namespace C__12
 
         static void Main(string[] args)
         {
+            DelegateChoice choice = NewGame;
+            choice += DownloadGame;
+            choice += Rules;
+            choice += AboutTheAuthor;
+            choice += Exit;
+
             Console.WriteLine("Выберите пункт меню: ");
             Console.WriteLine("1 - новая игра");
             Console.WriteLine("2 - загрузить игру");
@@ -77,6 +83,8 @@ namespace C__12
             {
                 Console.WriteLine(ex.Message);
             }
+
+            choice.GetInvocationList();
         }
     }
 }
