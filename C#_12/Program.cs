@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace C__12
 {
@@ -51,45 +52,13 @@ namespace C__12
             Console.WriteLine();
             int a = Convert.ToInt32(Console.ReadLine());
 
-            try
-            {
-                switch (a)
-                {
-                    case 1:
-                        DelegateChoice choice1 = NewGame;
-                        choice1();
-                        break;
-                    case 2:
-                        DelegateChoice choice2 = DownloadGame;
-                        choice2();
-                        break;
-                    case 3:
-                        DelegateChoice choice3 = Rules;
-                        choice3();
-                        break;
-                    case 4:
-                        DelegateChoice choice4 = AboutTheAuthor;
-                        choice4();
-                        break;
-                    case 0:
-                        DelegateChoice choice5 = Exit;
-                        choice5();
-                        break;
-                    default:
-                        throw new InvalidOperationException();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            Delegate d = choice.GetInvocationList()[a];
 
-            choice.GetInvocationList();
+            //choice.GetInvocationList()[a];
+
         }
     }
+
 }
-    
-          
-                
-    
+
 
